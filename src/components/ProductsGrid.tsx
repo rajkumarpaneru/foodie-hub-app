@@ -21,7 +21,7 @@ const ProductsGrid = () => {
       .get<Response>("/products")
       .then((res) => setProducts(res.data.data))
       .catch((err) => setError(err.message));
-  });
+  }, []);
 
   return (
     <>
