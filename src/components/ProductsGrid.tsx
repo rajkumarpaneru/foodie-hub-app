@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+import { Text } from "@chakra-ui/react";
 
 interface Product {
   id: number;
@@ -23,11 +24,14 @@ const ProductsGrid = () => {
   });
 
   return (
-    <ul>
-      {products.map((product) => (
-        <li key={product.id}>{product.name}</li>
-      ))}
-    </ul>
+    <>
+      {error && <Text>{error}</Text>}
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>{product.name}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
