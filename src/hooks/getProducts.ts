@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Product {
+export interface Product {
     id: number;
     name: string;
+    image_url: string;
   }
   
-  interface Response {
+interface Response {
     data: Product[];
   }
   

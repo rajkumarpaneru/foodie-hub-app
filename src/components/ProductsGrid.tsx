@@ -1,5 +1,6 @@
-import { Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import getProducts from "../hooks/getProducts";
+import ProductCard from "./ProductCard";
 
 const ProductsGrid = () => {
   const { products, error } = getProducts();
@@ -7,11 +8,15 @@ const ProductsGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        padding="10px"
+        spacing={10}
+      >
         {products.map((product) => (
-          <li key={product.id}>{product.name}</li>
+          <ProductCard key={product.id} product={product} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };
