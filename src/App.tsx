@@ -1,5 +1,6 @@
 import { Show, Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
+import ProductsGrid from "./components/ProductsGrid";
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem area="main" bg="dodgerblue">
-        Main
+        <ProductsGrid />
       </GridItem>
     </Grid>
   );
