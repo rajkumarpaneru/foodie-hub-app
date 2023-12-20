@@ -5,6 +5,7 @@ import { CanceledError } from "axios";
 export interface Product {
     id: number;
     name: string;
+    type: string;
     image_url: string;
   }
   
