@@ -19,21 +19,30 @@ const getProducts = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     const [error, setError] = useState("");
+
+    const [isLoading, setLoading] = useState(false);
   
     useEffect(() => {
         const controller = new AbortController();
+
+      setLoading(true);
+
       apiClient
         .get<Response>("/products", {signal: controller.signal})
-        .then((res) => setProducts(res.data.data))
+        .then((res) => {
+          setProducts(res.data.data);
+          setLoading(false);
+        })
         .catch((err) => {
             if(err instanceof CanceledError) return;
             setError(err.message);
+            setLoading(false);
         });
 
         return () => controller.abort();
     }, []);
 
-    return {products, error}
+    return {products, error, isLoading}
     
 }
 
