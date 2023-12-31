@@ -1,6 +1,14 @@
 import React from "react";
 import { Product } from "../hooks/getProducts";
-import { Card, CardBody, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Badge,
+  Card,
+  CardBody,
+  HStack,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import ProductTypeIcon from "./ProductTypeIcon";
 
 interface Props {
@@ -13,7 +21,17 @@ const ProductCard = ({ product }: Props) => {
       <Image src={product.image_url} />
       <CardBody>
         <Heading fontSize="2xl">{product.name}</Heading>
-        <ProductTypeIcon type={product.type} />
+        <HStack justifyContent="space-between">
+          <ProductTypeIcon type={product.type} />
+          <Badge
+            colorScheme="green"
+            fontSize={"16px"}
+            paddingX={2}
+            borderRadius="4px"
+          >
+            ${product.price.toFixed(2)}
+          </Badge>
+        </HStack>
       </CardBody>
     </Card>
   );

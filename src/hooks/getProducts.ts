@@ -7,11 +7,12 @@ export interface Product {
     name: string;
     type: string;
     image_url: string;
+    price: number;
   }
   
 interface Response {
     data: Product[];
-  }
+  } 
   
 
 const getProducts = () => {
