@@ -6,7 +6,8 @@ export interface Category {
     image_url: string;
   }
   
+  
 
-const useCategories = () => useData<Category>('/categories');
+const getCategories = () => useData<Category>('/categories');
 
-export default useCategories;
+export default getCategories;
