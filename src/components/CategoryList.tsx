@@ -11,9 +11,10 @@ import getCategories, { Category } from "../hooks/getCategories";
 
 interface Props {
   onSelectCategory: (category: Category) => void;
+  selectedCategory: Category | null;
 }
 
-const CategoryList = ({ onSelectCategory }: Props) => {
+const CategoryList = ({ selectedCategory, onSelectCategory }: Props) => {
   const { data, error, isLoading } = getCategories();
 
   // const categories = ["category1", "category2", "cateogry3", "cateogory4"];
@@ -29,6 +30,9 @@ const CategoryList = ({ onSelectCategory }: Props) => {
           <HStack>
             <Image boxSize="32px" borderRadius={8} src={category.image_url} />
             <Button
+              fontWeight={
+                category.id === selectedCategory?.id ? "bold" : "normal"
+              }
               onClick={() => onSelectCategory(category)}
               variant="link"
               fontSize="lg"
