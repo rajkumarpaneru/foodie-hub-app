@@ -4,6 +4,7 @@ import ProductsGrid from "./components/ProductsGrid";
 import CategoryList from "./components/CategoryList";
 import { useState } from "react";
 import { Category } from "./hooks/getCategories";
+import TypeSelector from "./components/TypeSelector";
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
@@ -33,6 +34,7 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <TypeSelector />
         <ProductsGrid selectedCategory={selectedCategory} />
       </GridItem>
     </Grid>
