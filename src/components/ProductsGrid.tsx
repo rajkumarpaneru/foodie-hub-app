@@ -15,7 +15,7 @@ const ProductsGrid = () => {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         padding="10px"
-        spacing={10}
+        spacing={4}
       >
         {isLoading &&
           skeletons.map((skeleton) => (

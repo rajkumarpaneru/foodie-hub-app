@@ -1,4 +1,4 @@
-import { Spinner } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import getCategories from "../hooks/getCategories";
 
 const CategoryList = () => {
@@ -11,11 +11,16 @@ const CategoryList = () => {
   if (isLoading) return <Spinner />;
 
   return (
-    <ul>
+    <List>
       {data.map((category) => (
-        <li key={category.id}>{category.name}</li>
+        <ListItem key={category.id} paddingY="5px">
+          <HStack>
+            <Image boxSize="32px" borderRadius={8} src={category.image_url} />
+            <Text fontSize="lg">{category.name}</Text>
+          </HStack>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 
