@@ -19,12 +19,12 @@ const ProductsGrid = () => {
       >
         {isLoading &&
           skeletons.map((skeleton) => (
-            <ProductCardContainer>
+            <ProductCardContainer key={skeleton}>
               <ProductCardSkeleton key={skeleton} />
             </ProductCardContainer>
           ))}
         {data.map((product) => (
-          <ProductCardContainer>
+          <ProductCardContainer key={product.id}>
             <ProductCard key={product.id} product={product} />
           </ProductCardContainer>
         ))}
