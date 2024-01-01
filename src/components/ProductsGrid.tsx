@@ -3,9 +3,14 @@ import getProducts from "../hooks/getProducts";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 import ProductCardContainer from "./ProductCardContainer";
+import { Category } from "../hooks/getCategories";
 
-const ProductsGrid = () => {
-  const { data, error, isLoading } = getProducts();
+interface Props {
+  selectedCategory: Category | null;
+}
+
+const ProductsGrid = ({ selectedCategory }: Props) => {
+  const { data, error, isLoading } = getProducts(selectedCategory);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
