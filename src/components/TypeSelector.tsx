@@ -3,16 +3,23 @@ import { BsChevronDown } from "react-icons/bs";
 import React from "react";
 import getProductTypes from "../hooks/getProductTypes";
 
-const TypeSelector = () => {
+interface Props {
+  onSelectType: (type: string) => void;
+  selectedType: string | null;
+}
+
+const TypeSelector = ({ onSelectType, selectedType }: Props) => {
   const { data } = getProductTypes();
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Types
+        {selectedType || "Types"}
       </MenuButton>
       <MenuList>
         {data.map((type, index) => (
-          <MenuItem key={index}>{type}</MenuItem>
+          <MenuItem onClick={() => onSelectType(type)} key={index}>
+            {type}
+          </MenuItem>
         ))}
       </MenuList>
     </Menu>

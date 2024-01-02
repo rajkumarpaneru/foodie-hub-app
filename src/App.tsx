@@ -11,6 +11,8 @@ const App = () => {
     null
   );
 
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+
   return (
     <Grid
       templateAreas={{
@@ -34,8 +36,14 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <TypeSelector />
-        <ProductsGrid selectedCategory={selectedCategory} />
+        <TypeSelector
+          selectedType={selectedType}
+          onSelectType={(type) => setSelectedType(type)}
+        />
+        <ProductsGrid
+          selectedType={selectedType}
+          selectedCategory={selectedCategory}
+        />
       </GridItem>
     </Grid>
   );

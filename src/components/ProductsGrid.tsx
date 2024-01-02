@@ -7,10 +7,14 @@ import { Category } from "../hooks/getCategories";
 
 interface Props {
   selectedCategory: Category | null;
+  selectedType: string | null;
 }
 
-const ProductsGrid = ({ selectedCategory }: Props) => {
-  const { data, error, isLoading } = getProducts(selectedCategory);
+const ProductsGrid = ({ selectedCategory, selectedType }: Props) => {
+  const { data, error, isLoading } = getProducts(
+    selectedCategory,
+    selectedType
+  );
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 

@@ -11,10 +11,11 @@ export interface Product {
   
   
 
-const getProducts = (selectedCategory: Category | null) => useData<Product>('/products', {
+const getProducts = (selectedCategory: Category | null, selectedType: string | null) => useData<Product>('/products', {
   params: {
-    category: selectedCategory?.id
+    category: selectedCategory?.id,
+    type: selectedType
   }
-}, [selectedCategory?.id]);
+}, [selectedCategory?.id, selectedType]);
 
 export default getProducts;
