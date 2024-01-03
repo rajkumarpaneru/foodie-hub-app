@@ -1,10 +1,11 @@
-import { Show, Grid, GridItem } from "@chakra-ui/react";
+import { Show, Grid, GridItem, HStack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import ProductsGrid from "./components/ProductsGrid";
 import CategoryList from "./components/CategoryList";
 import { useState } from "react";
 import { Category } from "./hooks/getCategories";
 import TypeSelector from "./components/TypeSelector";
+import SortSelector from "./components/SortSelector";
 
 export interface ProductQuery {
   category: Category | null;
@@ -46,10 +47,13 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <TypeSelector
-          selectedType={productQuery.type}
-          onSelectType={(type) => setProductQuery({ ...productQuery, type })}
-        />
+        <HStack spacing={5} paddingLeft={2} marginBottom={5}>
+          <TypeSelector
+            selectedType={productQuery.type}
+            onSelectType={(type) => setProductQuery({ ...productQuery, type })}
+          />
+          <SortSelector />
+        </HStack>
         <ProductsGrid productQuery={productQuery} />
       </GridItem>
     </Grid>
