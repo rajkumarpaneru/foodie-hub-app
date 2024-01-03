@@ -1,3 +1,4 @@
+import { ProductQuery } from "../App";
 import { Category } from "./getCategories";
 import useData from "./useData";
 
@@ -11,11 +12,11 @@ export interface Product {
   
   
 
-const getProducts = (selectedCategory: Category | null, selectedType: string | null) => useData<Product>('/products', {
+const getProducts = (productQuery: ProductQuery) => useData<Product>('/products', {
   params: {
-    category: selectedCategory?.id,
-    type: selectedType
+    category: productQuery.category?.id,
+    type: productQuery.type
   }
-}, [selectedCategory?.id, selectedType]);
+}, [productQuery]);
 
 export default getProducts;

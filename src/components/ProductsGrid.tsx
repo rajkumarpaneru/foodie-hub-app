@@ -4,17 +4,14 @@ import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 import ProductCardContainer from "./ProductCardContainer";
 import { Category } from "../hooks/getCategories";
+import { ProductQuery } from "../App";
 
 interface Props {
-  selectedCategory: Category | null;
-  selectedType: string | null;
+  productQuery: ProductQuery;
 }
 
-const ProductsGrid = ({ selectedCategory, selectedType }: Props) => {
-  const { data, error, isLoading } = getProducts(
-    selectedCategory,
-    selectedType
-  );
+const ProductsGrid = ({ productQuery }: Props) => {
+  const { data, error, isLoading } = getProducts(productQuery);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 

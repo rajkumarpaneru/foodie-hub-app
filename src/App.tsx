@@ -6,12 +6,20 @@ import { useState } from "react";
 import { Category } from "./hooks/getCategories";
 import TypeSelector from "./components/TypeSelector";
 
-const App = () => {
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null
-  );
+export interface ProductQuery {
+  category: Category | null;
+  type: string | null;
+}
 
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+const App = () => {
+  const [productQuery, setProductQuery] = useState<ProductQuery>(
+    {} as ProductQuery
+  );
+  // const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+  //   null
+  // );
+
+  // const [selectedType, setSelectedType] = useState<string | null>(null);
 
   return (
     <Grid
@@ -30,20 +38,19 @@ const App = () => {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <CategoryList
-            selectedCategory={selectedCategory}
-            onSelectCategory={(category) => setSelectedCategory(category)}
+            selectedCategory={productQuery.category}
+            onSelectCategory={(category) =>
+              setProductQuery({ ...productQuery, category })
+            }
           />
         </GridItem>
       </Show>
       <GridItem area="main">
         <TypeSelector
-          selectedType={selectedType}
-          onSelectType={(type) => setSelectedType(type)}
+          selectedType={productQuery.type}
+          onSelectType={(type) => setProductQuery({ ...productQuery, type })}
         />
-        <ProductsGrid
-          selectedType={selectedType}
-          selectedCategory={selectedCategory}
-        />
+        <ProductsGrid productQuery={productQuery} />
       </GridItem>
     </Grid>
   );
