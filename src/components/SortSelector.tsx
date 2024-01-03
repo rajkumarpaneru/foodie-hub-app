@@ -3,16 +3,37 @@ import { BsChevronDown } from "react-icons/bs";
 import React from "react";
 import getProductTypes from "../hooks/getProductTypes";
 
-const SortSelector = () => {
+interface Props {
+  onSelectSortOrder: (sortOrder: string) => void;
+  sortOrder: string | null;
+}
+
+const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+  const sortOrders = [
+    { value: "1", label: "1" },
+    { value: "2", label: "2" },
+    { value: "3", label: "3" },
+    { value: "4", label: "4" },
+  ];
+
+  const currentSortOrder = sortOrders.find(
+    (order) => order.value === sortOrder
+  );
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Order Products By
+        Order By : {currentSortOrder?.label || ""}
       </MenuButton>
       <MenuList>
-        <MenuItem>Date Added</MenuItem>
-        <MenuItem>Popularity</MenuItem>
-        <MenuItem>Name</MenuItem>
+        {sortOrders.map((order) => (
+          <MenuItem
+            onClick={() => onSelectSortOrder(order.value)}
+            key={order.value}
+            value={order.value}
+          >
+            {order.label}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );

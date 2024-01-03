@@ -1,5 +1,4 @@
 import { ProductQuery } from "../App";
-import { Category } from "./getCategories";
 import useData from "./useData";
 
 export interface Product {
@@ -15,7 +14,8 @@ export interface Product {
 const getProducts = (productQuery: ProductQuery) => useData<Product>('/products', {
   params: {
     category: productQuery.category?.id,
-    type: productQuery.type
+    type: productQuery.type,
+    order_by: productQuery.sortOrder,
   }
 }, [productQuery]);
 

@@ -10,6 +10,7 @@ import SortSelector from "./components/SortSelector";
 export interface ProductQuery {
   category: Category | null;
   type: string | null;
+  sortOrder: string | null;
 }
 
 const App = () => {
@@ -52,7 +53,12 @@ const App = () => {
             selectedType={productQuery.type}
             onSelectType={(type) => setProductQuery({ ...productQuery, type })}
           />
-          <SortSelector />
+          <SortSelector
+            sortOrder={productQuery.sortOrder}
+            onSelectSortOrder={(sortOrder) =>
+              setProductQuery({ ...productQuery, sortOrder })
+            }
+          />
         </HStack>
         <ProductsGrid productQuery={productQuery} />
       </GridItem>
