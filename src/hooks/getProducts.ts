@@ -16,6 +16,7 @@ const getProducts = (productQuery: ProductQuery) => useData<Product>('/products'
     category: productQuery.category?.id,
     type: productQuery.type,
     order_by: productQuery.sortOrder,
+    search: productQuery.searchText
   }
 }, [productQuery]);
 
