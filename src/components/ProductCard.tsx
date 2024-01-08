@@ -10,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ProductTypeIcon from "./ProductTypeIcon";
+import noImage from "../assets/placeholder.jpeg";
 
 interface Props {
   product: Product;
@@ -18,7 +19,7 @@ interface Props {
 const ProductCard = ({ product }: Props) => {
   return (
     <Card>
-      <Image src={product.image_url} />
+      <Image src={product.image_url ? product.image_url : noImage} />
       <CardBody>
         <Heading fontSize="2xl">{product.name}</Heading>
         <HStack justifyContent="space-between">
