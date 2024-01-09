@@ -1,4 +1,12 @@
-import { Show, Grid, GridItem, HStack, Flex, Box } from "@chakra-ui/react";
+import {
+  Show,
+  Grid,
+  GridItem,
+  HStack,
+  Flex,
+  Box,
+  Heading,
+} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import ProductsGrid from "./components/ProductsGrid";
 import CategoryList from "./components/CategoryList";
@@ -53,22 +61,28 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Flex paddingLeft={2} marginBottom={5}>
-          <Box marginRight={5}>
-            <TypeSelector
-              selectedType={productQuery.type}
-              onSelectType={(type) =>
-                setProductQuery({ ...productQuery, type })
+        <Box paddingLeft={2}>
+          <Heading as="h1" marginY={5}>
+            Products
+          </Heading>
+
+          <Flex marginBottom={5}>
+            <Box marginRight={5}>
+              <TypeSelector
+                selectedType={productQuery.type}
+                onSelectType={(type) =>
+                  setProductQuery({ ...productQuery, type })
+                }
+              />
+            </Box>
+            <SortSelector
+              sortOrder={productQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setProductQuery({ ...productQuery, sortOrder })
               }
             />
-          </Box>
-          <SortSelector
-            sortOrder={productQuery.sortOrder}
-            onSelectSortOrder={(sortOrder) =>
-              setProductQuery({ ...productQuery, sortOrder })
-            }
-          />
-        </Flex>
+          </Flex>
+        </Box>
         <ProductsGrid productQuery={productQuery} />
       </GridItem>
     </Grid>
