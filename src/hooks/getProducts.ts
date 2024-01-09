@@ -7,6 +7,7 @@ export interface Product {
     type: string;
     image_url: string;
     price: number;
+    spiceLevel: number;
   }
   
   

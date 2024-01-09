@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import ProductTypeIcon from "./ProductTypeIcon";
 import noImage from "../assets/placeholder.jpeg";
+import SpiceMeter from "./SpiceMeter";
 
 interface Props {
   product: Product;
@@ -33,6 +34,7 @@ const ProductCard = ({ product }: Props) => {
             ${product.price.toFixed(2)}
           </Badge>
         </HStack>
+        <SpiceMeter spiceLevel={product.spiceLevel} />
       </CardBody>
     </Card>
   );
