@@ -1,10 +1,11 @@
 import useData from "./useData";
+import produtTypes from "../data/produtTypes";
 
 // interface ProductType {
 //     id: number;
 //     name: string;
 // }
 
-const getProductTypes = () => useData<string>('/products/types');
+const getProductTypes = () => produtTypes;
 
 export default getProductTypes;
