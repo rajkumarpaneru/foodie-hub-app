@@ -15,27 +15,26 @@ const ProductsGrid = ({ productQuery }: Props) => {
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <>
-      {error && <Text>{error}</Text>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding="10px"
-        spacing={6}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <ProductCardContainer key={skeleton}>
-              <ProductCardSkeleton key={skeleton} />
-            </ProductCardContainer>
-          ))}
-        {data.map((product) => (
-          <ProductCardContainer key={product.id}>
-            <ProductCard key={product.id} product={product} />
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      padding="10px"
+      spacing={6}
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <ProductCardContainer key={skeleton}>
+            <ProductCardSkeleton key={skeleton} />
           </ProductCardContainer>
         ))}
-      </SimpleGrid>
-    </>
+      {data.map((product) => (
+        <ProductCardContainer key={product.id}>
+          <ProductCard key={product.id} product={product} />
+        </ProductCardContainer>
+      ))}
+    </SimpleGrid>
   );
 };
 
